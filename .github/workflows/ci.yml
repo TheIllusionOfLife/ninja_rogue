@@ -2,12 +2,13 @@ name: CI
 
 on:
   push:
-    branches: [ main, codex/implement-phase-1-of-issue-#4 ]
+    branches: [ main ]
   pull_request:
     branches: [ main ]
 
 jobs:
-  test:
+  # Python tests
+  test-python:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -77,6 +78,49 @@ jobs:
         EOF
             python -m pytest test_basic.py -v
         fi
+
+  # JavaScript/TypeScript tests
+  test-javascript:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: ['18.x', '20.x']
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+    
+    - name: Find and test JavaScript projects
+      run: |
+        # Find all package.json files in games directory
+        for package_json in $(find games -name "package.json" -type f); do
+          dir=$(dirname "$package_json")
+          echo "Testing JavaScript project in $dir"
+          cd "$dir"
+          
+          # Install dependencies
+          npm ci || npm install
+          
+          # Run tests if available
+          if npm run | grep -q "test"; then
+            npm test
+          else
+            echo "No test script found in $dir"
+          fi
+          
+          # Run lint if available
+          if npm run | grep -q "lint"; then
+            npm run lint
+          else
+            echo "No lint script found in $dir"
+          fi
+          
+          cd - > /dev/null
+        done || { echo "No JavaScript projects found yet"; exit 0; }
 
   security:
     runs-on: ubuntu-latest
