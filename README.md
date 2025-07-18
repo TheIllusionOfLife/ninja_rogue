@@ -47,7 +47,7 @@ make claude
 
 #### Python Games
 ```bash
-cd games/vampire_survivors
+cd games/[game_name]
 pip install -r requirements.txt
 python src/main.py
 ```
@@ -67,7 +67,7 @@ npm start
 ### Planned
 - **vampire_survivors_web** - Port to Phaser.js for web deployment
 - **ninja_3d** - 3D action game using Babylon.js
-- **roguelike_prototype** - Procedural dungeon crawler
+- **canvas_shooter** - Vanilla HTML5 Canvas experiment
 
 ## Contributing
 

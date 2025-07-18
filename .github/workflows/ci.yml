@@ -120,8 +120,7 @@ jobs:
           fi
           
           cd - > /dev/null
-        done || echo "No JavaScript projects found yet"
-      continue-on-error: true
+        done || { echo "No JavaScript projects found yet"; exit 0; }
 
   security:
     runs-on: ubuntu-latest

@@ -15,8 +15,8 @@ ninja_rogue/
 │   │   ├── src/         # Source code (structure varies by technology)
 │   │   ├── assets/      # Game-specific assets
 │   │   ├── README.md    # Setup and run instructions
-│   │   └── package.json # (for JavaScript projects)
-│   │       requirements.txt # (for Python projects)
+│   │   ├── package.json # (for JavaScript projects)
+│   │   └── requirements.txt # (for Python projects)
 ├── shared/              # Shared assets and utilities
 │   ├── sprites/         # Reusable sprites
 │   ├── sounds/          # Reusable audio
@@ -88,6 +88,8 @@ python -m http.server 8000
 
 #### Python Projects
 ```bash
+cd games/[game_name]
+
 # Create virtual environment (optional, devcontainer handles this)
 python -m venv venv
 source venv/bin/activate  # Linux/Mac
@@ -109,6 +111,8 @@ ruff check src/
 
 #### JavaScript/TypeScript Projects
 ```bash
+cd games/[game_name]
+
 # Install dependencies
 npm install
 

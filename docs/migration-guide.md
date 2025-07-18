@@ -38,4 +38,9 @@ games/vampire_survivors/
 ### Future Considerations
 - Consider extracting reusable sprites to `shared/sprites/`
 - Document any game-specific design patterns discovered
-- Plan for web port using Phaser.js
+- Plan for web port using Phaser.js:
+  - Evaluate the feasibility of using Phaser.js for the web port
+  - Identify key game features that need to be adapted for web compatibility
+  - Research and document any limitations or challenges with Phaser.js
+  - Create a prototype to test core game mechanics in Phaser.js
+  - Develop a timeline and resource plan for the web port
