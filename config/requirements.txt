@@ -1,0 +1,8 @@
+# Development dependencies
+pytest>=7.0.0
+mypy>=1.0.0
+ruff>=0.1.0
+bandit[toml]>=1.7.0
+
+# Game dependencies
+# pygame>=2.5.0  # Uncomment when implementing Python games
